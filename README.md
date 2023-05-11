@@ -61,9 +61,7 @@ In rom folder, for building Gapps
 . build/envsetup.sh
 ccache -M 50G -F 0
 lunch treble_arm64_bgN-userdebug 
- 
- # Remove TARGET_BUILD_GAPPS=true if building vanilla.
-TARGET_BUILD_GAPPS=true make systemimage -j$(nproc --all)
+make systemimage -j$(nproc --all)
 ```
 
 ## Compress
