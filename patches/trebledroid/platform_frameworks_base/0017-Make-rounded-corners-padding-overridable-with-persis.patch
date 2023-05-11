@@ -1,4 +1,4 @@
-From 22cbb2eef0fb9e3f45e5193b672272bfdde8af7e Mon Sep 17 00:00:00 2001
+From e190496e1560590066c17f2237b149bc87724802 Mon Sep 17 00:00:00 2001
 From: Pierre-Hugues Husson <phh@phh.me>
 Date: Sun, 6 Dec 2020 12:20:08 +0100
 Subject: [PATCH] Make rounded corners padding overridable with
@@ -8,8 +8,8 @@ Change-Id: I481c1c8849b2f22a7cdfb2896a6d3c2e7e3b44d9
 ---
  .../src/com/android/systemui/qs/QuickStatusBarHeader.java  | 7 +++++--
  .../systemui/statusbar/phone/KeyguardStatusBarView.java    | 7 +++++--
- .../statusbar/phone/StatusBarContentInsetsProvider.kt      | 4 +++-
- 3 files changed, 13 insertions(+), 5 deletions(-)
+ .../statusbar/phone/StatusBarContentInsetsProvider.kt      | 5 ++++-
+ 3 files changed, 14 insertions(+), 5 deletions(-)
 
 diff --git a/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java b/packages/SystemUI/src/com/android/systemui/qs/QuickStatusBarHeader.java
 index 89fc670b..7e20b5d7 100644
@@ -62,10 +62,18 @@ index e41dde29..71ca0b50 100644
  
      private void updateVisibilities() {
 diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt b/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt
-index f4f22341..2d9c8da5 100644
+index f4f22341..6fe98274 100644
 --- a/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt
 +++ b/packages/SystemUI/src/com/android/systemui/statusbar/phone/StatusBarContentInsetsProvider.kt
-@@ -231,7 +231,9 @@ class StatusBarContentInsetsProvider @Inject constructor(
+@@ -39,6 +39,7 @@ import com.android.systemui.util.leak.RotationUtils.Rotation
+ import com.android.systemui.util.leak.RotationUtils.getExactRotation
+ import com.android.systemui.util.leak.RotationUtils.getResourcesForRotation
+ import com.android.systemui.util.traceSection
++import android.os.SystemProperties
+ 
+ import java.io.PrintWriter
+ import java.lang.Math.max
+@@ -231,7 +232,9 @@ class StatusBarContentInsetsProvider @Inject constructor(
      ): Rect {
          val currentRotation = getExactRotation(context)
  
